@@ -1,0 +1,5 @@
+{
+  "name": "SurveyViz - Insight Generator",
+  "description": "A professional tool to visualize survey data with purple-themed bar charts, supporting manual entry and AI-powered text parsing.",
+  "requestFramePermissions": []
+}
