@@ -59,43 +59,42 @@ const App: React.FC = () => {
       </div>
 
       <div className="flex flex-1 overflow-hidden relative">
-        {/* Left Panel: Editor */}
+        {/* Left Panel: Editor Container */}
         <div 
           className={`
             h-full bg-white border-r border-slate-200 z-20 
             transition-all duration-500 ease-in-out
-            absolute md:relative overflow-hidden
+            absolute md:relative group
             ${isEditorOpen 
               ? 'w-full md:w-[420px] lg:w-[480px] translate-x-0 opacity-100' 
               : 'w-0 -translate-x-10 md:translate-x-0 md:w-0 opacity-0 pointer-events-none'
             }
           `}
         >
-          <div className="w-full md:w-[420px] lg:w-[480px] h-full flex flex-col">
+          <div className="w-full md:w-[420px] lg:w-[480px] h-full flex flex-col overflow-hidden">
             <SurveyEditor 
               data={surveyData} 
-              onChange={setSurveyData} 
-              onClose={() => setIsEditorOpen(false)} 
+              onChange={setSurveyData}
+              onClose={() => setIsEditorOpen(false)}
             />
           </div>
         </div>
 
         {/* Right Panel: Preview */}
         <div className="flex-1 relative bg-slate-50 w-full h-full overflow-hidden flex flex-col">
-          {/* Floating Expand Button (Desktop Only) */}
-          {/* Moved to bottom-left to avoid blocking the header text */}
+          {/* Floating Expand Button (Top Right) - Hidden when editor is open */}
           <button
             onClick={() => setIsEditorOpen(true)}
             className={`
-              absolute bottom-6 left-6 z-10 
-              hidden md:flex items-center justify-center p-3
+              absolute top-6 right-6 z-10 
+              hidden md:flex items-center justify-center p-2 
               bg-white text-slate-500 rounded-full shadow-lg border border-slate-100 
               hover:text-purple-600 hover:scale-110 transition-all duration-300
               ${isEditorOpen ? 'opacity-0 scale-75 pointer-events-none' : 'opacity-100 scale-100'}
             `}
             title="展开数据编辑器"
           >
-            <PanelLeftOpen size={24} />
+            <PanelLeftOpen size={20} />
           </button>
 
           <div className="flex-1 overflow-y-auto w-full">
